@@ -2,10 +2,8 @@ import { useState, FormEvent } from 'react';
 import { Send, Mail, Phone, MapPin } from 'lucide-react';
 import { Button } from './ui/button';
 import { useToast } from '@/hooks/use-toast';
-
-// TODO: Add Firebase config here
-// import { db } from '@/lib/firebase';
-// import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '@/lib/firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -21,14 +19,11 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // TODO: Connect contact form to Firestore
-      // await addDoc(collection(db, 'contacts'), {
-      //   ...formData,
-      //   createdAt: serverTimestamp(),
-      // });
-
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Save contact form submission to Firestore
+      await addDoc(collection(db, 'contacts'), {
+        ...formData,
+        createdAt: serverTimestamp(),
+      });
 
       toast({
         title: "Message sent!",
