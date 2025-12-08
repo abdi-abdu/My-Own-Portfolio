@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics, isSupported } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 
-// Firebase configuration
+// Firebase configuration for portfolio
 const firebaseConfig = {
   apiKey: "AIzaSyDp0UvfKsLX_u8GtL-g4PTnPOtA6d3Rpgo",
   authDomain: "portfolio-de830.firebaseapp.com",
