@@ -39,14 +39,14 @@ const Footer = () => {
               </a>
             ))}
             <a
-              href="mailto:contact@abdulazizaman.com"
+              href="mailto:abdulazizabdulmenan6695@gmail.com"
               className="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
               aria-label="Email"
             >
               <Mail size={18} />
             </a>
             <a
-              href="tel:+1234567890"
+              href="tel:+251916019698"
               className="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
               aria-label="Phone"
             >

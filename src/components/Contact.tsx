@@ -77,7 +77,7 @@ const Contact = () => {
             
             <div className="space-y-4">
               <a 
-                href="mailto:contact@abdulazizaman.com" 
+                href="mailto:abdulazizabdulmenan6695@gmail.com" 
                 className="flex items-center gap-4 p-4 bg-card border border-border rounded-lg hover:border-primary/50 transition-colors group"
               >
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors">
@@ -85,12 +85,12 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Email</p>
-                  <p className="text-foreground font-medium">contact@abdulazizaman.com</p>
+                  <p className="text-foreground font-medium">abdulazizabdulmenan6695@gmail.com</p>
                 </div>
               </a>
               
               <a 
-                href="tel:+1234567890" 
+                href="tel:+251916019698" 
                 className="flex items-center gap-4 p-4 bg-card border border-border rounded-lg hover:border-primary/50 transition-colors group"
               >
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors">
@@ -98,7 +98,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Phone</p>
-                  <p className="text-foreground font-medium">+1 (234) 567-890</p>
+                  <p className="text-foreground font-medium">+251 916 019 698</p>
                 </div>
               </a>
               
@@ -108,7 +108,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Location</p>
-                  <p className="text-foreground font-medium">Available for Remote Work</p>
+                  <p className="text-foreground font-medium">Addis Ababa, Ethiopia</p>
                 </div>
               </div>
             </div>
