@@ -1,5 +1,6 @@
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from './ui/button';
+import profileImage from '@/assets/profile.jpg';
 
 const Hero = () => {
   return (
@@ -55,9 +56,11 @@ const Hero = () => {
             <div className="relative">
               <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-gradient-to-br from-primary/30 to-primary/5 flex items-center justify-center">
                 <div className="w-56 h-56 sm:w-72 sm:h-72 rounded-full bg-card border border-border overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-secondary to-card flex items-center justify-center">
-                    <span className="font-display text-6xl sm:text-7xl font-bold text-gradient">AA</span>
-                  </div>
+                  <img 
+                    src={profileImage} 
+                    alt="Abdulaziz Aman" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
               <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-primary/20 rounded-full blur-2xl" />
