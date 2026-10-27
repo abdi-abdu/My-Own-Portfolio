@@ -1,0 +1,31 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Projects: anyone can read; only signed-in admins can write.
+    // (Writes here are gated by auth. To lock this down to a specific admin
+    // account instead of any signed-in user, replace `request.auth != null`
+    // with `request.auth.token.email == 'you@example.com'` in each write rule,
+    // and disable public sign-up in Firebase Auth so strangers can't create
+    // accounts.)
+    match /projects/{id} {
+      allow read: if true;
+      allow create, update, delete: if request.auth != null;
+    }
+
+    // Blog posts: anyone can read published posts; signed-in admins can read
+    // drafts and write. Public list queries already filter `published == true`,
+    // so visitors only ever receive published docs.
+    match /blogPosts/{id} {
+      allow read: if resource.data.published == true || request.auth != null;
+      allow create, update, delete: if request.auth != null;
+    }
+
+    // Contact submissions: anyone can submit via the contact form; only
+    // signed-in admins can read, mark as read, or delete.
+    match /contacts/{id} {
+      allow create: if true;
+      allow read, update, delete: if request.auth != null;
+    }
+  }
+}

@@ -20,8 +20,12 @@ const Contact = () => {
 
     try {
       // Save contact form submission to Firestore
+      // `read: false` is required so the admin dashboard "unread" query
+      // (where('read', '==', false)) actually matches new messages —
+      // Firestore only matches documents that contain the queried field.
       await addDoc(collection(db, 'contacts'), {
         ...formData,
+        read: false,
         createdAt: serverTimestamp(),
       });
 

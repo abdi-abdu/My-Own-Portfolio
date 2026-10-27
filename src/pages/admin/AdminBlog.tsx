@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { 
-  collection, 
-  getDocs, 
-  addDoc, 
-  updateDoc, 
-  deleteDoc, 
-  doc, 
-  Timestamp,
+import {
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+  serverTimestamp,
   orderBy,
   query
 } from 'firebase/firestore';
@@ -102,9 +102,8 @@ const AdminBlog = () => {
       slug: formData.slug || generateSlug(formData.title),
       coverImage: formData.coverImage,
       published: formData.published,
-      publishedAt: formData.published ? Timestamp.now() : null,
+      publishedAt: formData.published ? serverTimestamp() : null,
       tags: formData.tags.split(',').map(s => s.trim()).filter(Boolean),
-      createdAt: editingPost?.createdAt || Timestamp.now(),
     };
 
     try {
@@ -112,7 +111,10 @@ const AdminBlog = () => {
         await updateDoc(doc(db, 'blogPosts', editingPost.id), postData);
         toast({ title: 'Blog post updated successfully!' });
       } else {
-        await addDoc(collection(db, 'blogPosts'), postData);
+        await addDoc(collection(db, 'blogPosts'), {
+          ...postData,
+          createdAt: serverTimestamp(),
+        });
         toast({ title: 'Blog post created successfully!' });
       }
       

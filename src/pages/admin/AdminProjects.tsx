@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { 
-  collection, 
-  getDocs, 
-  addDoc, 
-  updateDoc, 
-  deleteDoc, 
-  doc, 
-  Timestamp,
+import {
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+  serverTimestamp,
   orderBy,
   query
 } from 'firebase/firestore';
@@ -99,7 +99,6 @@ const AdminProjects = () => {
       liveUrl: formData.liveUrl,
       featured: formData.featured,
       order: formData.order,
-      createdAt: editingProject?.createdAt || Timestamp.now(),
     };
 
     try {
@@ -107,7 +106,10 @@ const AdminProjects = () => {
         await updateDoc(doc(db, 'projects', editingProject.id), projectData);
         toast({ title: 'Project updated successfully!' });
       } else {
-        await addDoc(collection(db, 'projects'), projectData);
+        await addDoc(collection(db, 'projects'), {
+          ...projectData,
+          createdAt: serverTimestamp(),
+        });
         toast({ title: 'Project created successfully!' });
       }
       
@@ -238,7 +240,7 @@ const AdminProjects = () => {
                     id="order"
                     type="number"
                     value={formData.order}
-                    onChange={(e) => setFormData({ ...formData, order: parseInt(e.target.value) })}
+                    onChange={(e) => setFormData({ ...formData, order: parseInt(e.target.value) || 0 })}
                   />
                 </div>
                 <div className="flex items-center gap-2 pt-8">
